@@ -13,14 +13,14 @@
                             </svg>
                         </a>
                     </li>
-                    <li class="breadcrumb-item"><a href="#">Pelanggan</a></li>
+                    <li class="breadcrumb-item"><a href="#">User</a></li>
                     <li class="breadcrumb-item active" aria-current="page">Edit Data</li>
                 </ol>
             </nav>
             <div class="d-flex justify-content-between w-100 flex-wrap">
                 <div class="mb-3 mb-lg-0">
-                    <h1 class="h4">Edit Pelanggan</h1>
-                    <p class="mb-0">Form untuk mengubah data pelanggan baru.</p>
+                    <h1 class="h4">Edit User</h1>
+                    <p class="mb-0">Form untuk mengubah data user baru.</p>
                 </div>
                 <div>
                     <a href="" class="btn btn-primary"><i class="far fa-question-circle me-1"></i> Kembali</a>
@@ -41,7 +41,7 @@
                                 </ul>
                             </div>
                         @endif
-                        <form action="{{ route('pelanggan.update', $dataPelanggan->pelanggan_id) }}" method="POST" novalidate>
+                        <form action="{{ route('user.update', $dataUser->user_id) }}" method="POST" novalidate>
                             @csrf
                             @method('PUT')
                             <div class="row mb-4">
@@ -49,19 +49,19 @@
                                     <!-- First Name -->
                                     <div class="mb-3">
                                         <label for="first_name" class="form-label"
-                                            value="{{ old('first_name', $dataPelanggan->first_name) }}">First
+                                            value="{{ old('first_name', $dataUser->first_name) }}">First
                                             name</label>
                                         <input type="text" id="first_name" class="form-control" name="first_name"
-                                            value="{{ $dataPelanggan->first_name }}" required>
+                                            value="{{ $dataUser->first_name }}" required>
                                     </div>
 
                                     <!-- Last Name -->
                                     <div class="mb-3">
                                         <label for="last_name" class="form-label"
-                                            value="{{ old('last_name', $dataPelanggan->last_name) }}">Last
+                                            value="{{ old('last_name', $dataUser->last_name) }}">Last
                                             name</label>
                                         <input type="text" id="last_name" class="form-control" name="last_name"
-                                            value="{{ $dataPelanggan->last_name }}" required>
+                                            value="{{ $dataUser->last_name }}" required>
                                     </div>
                                 </div>
 
@@ -69,9 +69,9 @@
                                     <!-- Birthday -->
                                     <div class="mb-3">
                                         <label for="birthday" class="form-label"
-                                            value="{{ old('birthday', \Carbon\Carbon::parse($dataPelanggan->birthday)->format('Y-m-d')) }}">Birthday</label>
+                                            value="{{ old('birthday', \Carbon\Carbon::parse($dataUser->birthday)->format('Y-m-d')) }}">Birthday</label>
                                         <input type="date" id="birthday" class="form-control" name="birthday"
-                                            value="{{ $dataPelanggan->birthday }}" required>
+                                            value="{{ $dataUser->birthday }}" required>
                                     </div>
 
                                     <!-- Gender -->
@@ -80,10 +80,10 @@
                                         <select name="gender" class="form-select">
                                             <option value="">Pilih Gender</option>
                                             <option value="Male"
-                                                {{ old('gender', $dataPelanggan->gender) == 'Male' ? 'selected' : '' }}>
+                                                {{ old('gender', $dataUser->gender) == 'Male' ? 'selected' : '' }}>
                                                 Male</option>
                                             <option value="Female"
-                                                {{ old('gender', $dataPelanggan->gender) == 'Female' ? 'selected' : '' }}>
+                                                {{ old('gender', $dataUser->gender) == 'Female' ? 'selected' : '' }}>
                                                 Female</option>
                                         </select>
                                     </div>
@@ -93,23 +93,23 @@
                                     <!-- Email -->
                                     <div class="mb-3">
                                         <label for="email" class="form-label"
-                                            value="{{ old('email', $dataPelanggan->email) }}">Email</label>
+                                            value="{{ old('email', $dataUser->email) }}">Email</label>
                                         <input type="text" id="email" class="form-control" name="email"
-                                            value="{{ $dataPelanggan->email }}" required>
+                                            value="{{ $dataUser->email }}" required>
                                     </div>
 
                                     <!-- Phone -->
                                     <div class="mb-3">
                                         <label for="phone" class="form-label"
-                                            value="{{ old('phone', $dataPelanggan->phone) }}">Phone</label>
+                                            value="{{ old('phone', $dataUser->phone) }}">Phone</label>
                                         <input type="text" id="phone" class="form-control" name="phone"
-                                            value="{{ $dataPelanggan->phone }}" required>
+                                            value="{{ $dataUser->phone }}" required>
                                     </div>
 
                                     <!-- Buttons -->
                                     <div class="">
                                         <button class="btn btn-info">Simpan Perubahan</button>
-                                        <a href="{{ route('pelanggan.index') }}"
+                                        <a href="{{ route('user.index') }}"
                                             class="btn btn-outline-secondary ms-2">Batal</a>
                                     </div>
                                 </div>

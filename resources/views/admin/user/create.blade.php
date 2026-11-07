@@ -13,14 +13,14 @@
                             </svg>
                         </a>
                     </li>
-                    <li class="breadcrumb-item"><a href="#">Pelanggan</a></li>
-                    <li class="breadcrumb-item active" aria-current="page">Tambah Pelanggan</li>
+                    <li class="breadcrumb-item"><a href="#">User</a></li>
+                    <li class="breadcrumb-item active" aria-current="page">Tambah User</li>
                 </ol>
             </nav>
             <div class="d-flex justify-content-between w-100 flex-wrap">
                 <div class="mb-3 mb-lg-0">
-                    <h1 class="h4">Tambah Pelanggan</h1>
-                    <p class="mb-0">Form untuk menambahkan data pelanggan baru.</p>
+                    <h1 class="h4">Tambah User</h1>
+                    <p class="mb-0">Form untuk menambahkan data user baru.</p>
                 </div>
                 <div>
                     <a href="" class="btn btn-primary"><i class="far fa-question-circle me-1"></i> Kembali</a>
@@ -32,7 +32,7 @@
             <div class="col-12 mb-4">
                 <div class="card border-0 shadow components-section">
                     <div class="card-body">
-                        <form action="{{route ('pelanggan.store') }}" method="POST">
+                        <form action="{{route ('user.store') }}" method="POST">
                             @csrf
                             <div class="row mb-4">
                                 <div class="col-lg-4 col-sm-6">
@@ -84,7 +84,7 @@
                                     <!-- Buttons -->
                                     <div class="">
                                         <button type="submit" class="btn btn-primary">Simpan</button>
-                                        <a href="{{ route('pelanggan.index') }}"
+                                        <a href="{{ route('user.index') }}"
                                             class="btn btn-outline-secondary ms-2">Batal</a>
                                     </div>
                                 </div>

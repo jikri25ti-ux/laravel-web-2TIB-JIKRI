@@ -14,8 +14,8 @@ class UserController extends Controller
      */
     public function index()
     {
-            $dataUser = User::all();
-            return view('admin.user.index', compact('dataUser'));
+        $dataUser = User::all();
+        return view('admin.user.index', compact('dataUser'));
     }
 
     /**
@@ -35,18 +35,17 @@ class UserController extends Controller
         //dd($request->all());
 
         $data = $request->validate([
-        'first_name' => 'required',
-        'last_name' => 'required',
-        'birthday' => 'required|date',
-        'gender' => 'required|in:Male,Female',
-        'email' => 'required|email',
-        'phone' => 'required|numeric',
-    ]);
+            'first_name' => 'required|string|max:255',
+            'last_name'  => 'required|string|max:255',
+            'birthday'   => 'nullable|date',
+            'gender'     => 'required|in:Male,Female,Other',
+            'email'      => 'required|email|unique:users,email',
+            'phone'      => 'required|numeric',
+        ]);
 
         User::create($data);
 
-        return redirect()->route('user.index')
-        ->with('success', 'Data user berhasil ditambahkan');
+        return redirect()->route('user.index')->with('success', 'User berhasil ditambahkan!');
     }
 
     /**
@@ -71,21 +70,17 @@ class UserController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        $validated = $request->validate([
-        'first_name' => 'required',
-        'last_name' => 'required',
-        'birthday' => 'required|date',
-        'gender' => 'required|in:Male,Female',
-        'email' => 'required|email',
-        'phone' => 'required|numeric',
-    ]);
-
-        $pelanggan = Pelanggan::findOrFail($id);
-        $pelanggan->update($validated);
-
-        return redirect()->route('pelanggan.index')
-        ->with('success', 'Perubahan Data Berhasil!');
-
+        $data = $request->validate([
+            'first_name' => 'required|string|max:255',
+            'last_name'  => 'required|string|max:255',
+            'birthday'   => 'nullable|date',
+            'gender'     => 'required|in:Male,Female,Other',
+            'email'      => 'required|email|unique:users,email,' . $id . ',user_id',
+            'phone'      => 'required|numeric',
+        ]);
+        $user = User::where('user_id', $id)->firstOrFail();
+        $user->update($data);
+        return redirect()->route('user.index')->with('success', 'Data user berhasil diperbarui!');
     }
 
     /**
@@ -96,6 +91,6 @@ class UserController extends Controller
         $user = User::findOrFail($id);
 
         $user->delete();
-        return redirect()->route('user.index')->with('success','Data berhasil dihapus');
+        return redirect()->route('user.index')->with('success', 'Data berhasil dihapus');
     }
 }
